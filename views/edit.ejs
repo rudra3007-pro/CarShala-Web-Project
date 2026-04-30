@@ -1,0 +1,77 @@
+<%- include('partials/header', { pageTitle: 'Edit Car' }) %>
+
+<div class="container" style="max-width: 560px;">
+
+
+  <div class="page-header mb-4">
+    <h1><i class="bi bi-pencil-square me-2"></i>Edit Car</h1>
+    <p>Update pricing and seating for this vehicle.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-body p-4 p-md-5">
+
+
+      <div class="mb-4 p-3 rounded-3 bg-light border d-flex align-items-center gap-3">
+        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center"
+             style="width:48px;height:48px;flex-shrink:0;">
+          <i class="bi bi-car-front-fill text-primary fs-5"></i>
+        </div>
+        <div>
+          <p class="text-muted small mb-0">Car Name (cannot change)</p>
+          <p class="fw-bold fs-5 mb-0"><%= car.carName %></p>
+        </div>
+      </div>
+
+
+      <form action="/car/<%= car._id %>/edit" method="POST" class="needs-validation" novalidate>
+
+        <div class="mb-3">
+          <label for="edit-price" class="form-label">Price (₹)</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-currency-rupee"></i></span>
+            <input
+              id="edit-price"
+              class="form-control"
+              name="price"
+              type="number"
+              min="0"
+              value="<%= car.price %>"
+              required
+            />
+            <div class="invalid-feedback">Please enter a valid price.</div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="edit-seater" class="form-label">Seats</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-people"></i></span>
+            <input
+              id="edit-seater"
+              class="form-control"
+              name="seater"
+              type="number"
+              min="1"
+              value="<%= car.seater %>"
+            />
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <a href="/car" class="btn btn-outline-secondary flex-fill py-2">
+            <i class="bi bi-arrow-left me-1"></i>Cancel
+          </a>
+          <button type="submit" class="btn btn-primary flex-fill py-2 fw-semibold">
+            <i class="bi bi-check-lg me-1"></i>Update Car
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+<%- include('partials/footer') %>

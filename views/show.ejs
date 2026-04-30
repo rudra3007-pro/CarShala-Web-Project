@@ -1,0 +1,67 @@
+<%- include('partials/header', { pageTitle: car.carName }) %>
+
+<div class="container" style="max-width: 600px;">
+
+
+  <div class="page-header d-flex align-items-center justify-content-between flex-wrap gap-2">
+    <div>
+      <h1><i class="bi bi-car-front-fill me-2"></i><%= car.carName %></h1>
+      <p>Full details for this vehicle.</p>
+    </div>
+    <a href="/car" class="btn btn-light btn-sm fw-semibold">
+      <i class="bi bi-arrow-left me-1"></i>Back
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body p-4">
+
+      <div class="detail-row">
+        <div class="detail-icon"><i class="bi bi-car-front-fill"></i></div>
+        <div>
+          <p class="text-muted small mb-0">Car Name</p>
+          <p class="fw-semibold mb-0 fs-5"><%= car.carName %></p>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-icon"><i class="bi bi-currency-rupee"></i></div>
+        <div>
+          <p class="text-muted small mb-0">Price</p>
+          <p class="fw-semibold mb-0 fs-5">₹<%= car.price.toLocaleString('en-IN') %></p>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-icon"><i class="bi bi-people-fill"></i></div>
+        <div>
+          <p class="text-muted small mb-0">Seating Capacity</p>
+          <p class="fw-semibold mb-0 fs-5"><%= car.seater %> seats</p>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-icon"><i class="bi bi-calendar-event"></i></div>
+        <div>
+          <p class="text-muted small mb-0">Added On</p>
+          <p class="fw-semibold mb-0"><%= car.createdAt.toDateString() %></p>
+        </div>
+      </div>
+
+      <div class="d-flex gap-2 mt-4">
+        <a href="/car/<%= car._id %>/edit" class="btn btn-primary flex-fill py-2 fw-semibold">
+          <i class="bi bi-pencil me-1"></i>Edit Car
+        </a>
+        <a href="/car/<%= car._id %>/delete"
+           class="btn btn-outline-danger flex-fill py-2 fw-semibold"
+           onclick="return confirm('Delete <%= car.carName %>?')">
+          <i class="bi bi-trash me-1"></i>Delete
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<%- include('partials/footer') %>
